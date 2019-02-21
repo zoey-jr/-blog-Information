@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="css/bootstrap-3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/iconfont/iconfont.css">
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrapSwitch/css/bootstrap3/bootstrap-switch.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/highcharts.js"></script>
+	<script src="js/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/index.js"></script>
+	<script src="css/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="css/bootstrapSwitch/js/bootstrap-switch.min.js"></script>
+	<script>
+		$(function(){
+			$('.navbar').height($(window).height());
+			$('.contentbody').height($(window).height()-70);
+			$('.contentbody').load('pages/homepage.html'); 
+		});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<!-- 页面左侧 -->
+			<div class="col-lg-3 ">
+				<div class="navbar" role="navigation">
+					<!-- 左侧标题 -->
+					<div class="nav-header ">
+		                <a class="navbar-brand" href="">博博 blog</a>
+		                <img src="images/u9.png" alt="Brand">
+					</div>
+					<!-- 左侧列表 -->
+					<ul class="nav">
+							<li>
+								<a href="#">
+									<i class="fa fa-home"></i>
+									<span class="words words-sy ">首页</span>
+									<span class="fa  fa-angle-right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="fa fa-reorder"></span>
+									<span class="words">添加栏目</span>
+									<span class="fa  fa-angle-right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="fa fa-certificate"></span>
+									<span class="words">发布文章</span>
+									<span class="fa  fa-angle-right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="fa fa-user"></span>
+									<span class="words">用户管理</span>
+									<span class="fa  fa-angle-right"></span>
+								</a>
+							</li>
+					</ul>
+			    </div>
+		    </div>
+		<!-- 页面右侧 -->
+			<div class="content col-lg-9">
+				<!-- 右侧头部 -->
+				<div class="con-header">
+					<span class="glyphicon glyphicon-list"></span>
+					<!-- <span class="glyphicon glyphicon-volume-up"></span> -->
+					<!-- <div class="redcicle">4</div> -->
+					<div class="personal">
+					    <img src="" alt="">
+					    <span>我的博客  ></span>
+					</div>
+				</div>
+				<!-- 右侧内容区 -->
+				<div class="contentbody">
+					
+			  </div>
+		  </div>
+		
+	</div>
+</body>
+</html>

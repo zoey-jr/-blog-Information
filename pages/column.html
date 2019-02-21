@@ -1,0 +1,238 @@
+<div id="category">
+	<button class="btn btn-success addBtn">新增</button>
+	<button class="btn btn-warning deleteBtn">批量删除</button>
+	<!-- 栏目列表 -->
+	<div class="categoryDiv">
+		<table class="table table-bordered text-center">
+			<tr>
+				<td width="80px">编号</td>
+				<td width="120px">栏目名称</td>
+				<td width="140px">父栏目</td>
+				<td width="350px">描述</td>
+				<td width="80px">操作</td>
+			</tr>
+		</table>
+	</div>
+	<!-- 模态框 -->
+	<div class="modal">
+	    <div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-header text-center">
+	    			<div class="backCategory">
+	    				<i class="iconfont icon-jiantou-zuo"></i>
+              <span>返回</span>
+	    			</div>
+	    			<div class="modal-title">添加栏目</div>
+	    		</div>
+	    		<div class="modal-body">
+	    			<form class="form">
+	    				<div class="form-group">
+	    					<label for="">栏目名称</label>
+	    					<input type="text" class="form-control" name="categoryName">
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="">父栏目</label>
+	    					<select name="categoryParent" class="form-control">
+	    						<option value="">请选择</option>
+	    					</select>
+	    				</div>
+	    				<div class="form-group">
+	    					<label for="">描述</label>
+	    					<textarea name="categoryComment" cols="10" rows="5" class="form-control"></textarea> 
+	    				</div>
+	    				<div class="form-group hide">
+	    					<button type="reset" class="reset">重置</button>
+	    				</div>
+	    			</form>
+	    		</div>
+	    		<div class="modal-footer">
+	    			<span class="messageSpan"></span>
+	    			<button class="btn btn-success submitBtn">提交</button>
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+</div>
+<script>
+	$(function(){
+		//声明全局变量categories存放所有栏目对象
+		var categories = [];
+		//新增显示模态框
+		$('.addBtn').click(function(){
+			//先清空表单，清除提示信息，清空select里面的内容，除了第一行，从后台获取所有的栏目，追加option，显示模态框
+			//1.清空表单，利用模拟点击事件
+			$('input[type=reset]').trigger('click');
+			//2.清除提示信息
+	        $('.messageSpan').html('');
+	        //3.清空select里面的内容，除了第一行
+	        $('#category select option:not(:first)').remove();
+	        //4.获取栏目,追加到option
+	        $.get(baseURL+'/manager/category/findAllCategory',function(res){
+	      	res.data.forEach(function(item){
+	      		var $option = $(`
+		    						<option value="`+item.id+`">`+item.name+`</option>
+		    					`);
+	      		$('#category select').append($option);
+	      	});
+	      	$('.modal').show();
+	      });
+		});
+		//返回关闭模态框
+		$('.backCategory').click(function(){
+			$('.modal').hide();
+		});
+		//提交
+	    $('.submitBtn').click(function(){
+	    	//获取数据，表单验证，不通过提示用户，通过则传递数据给后台，加载数据，刷戏页面，关闭模态框
+	    	var categoryName = $('input[name=categoryName]').val();
+	    	var categoryParent = $('input[name=categoryParent]').val();
+	    	var categoryComment = $('textarea[name=categoryComment]').val();
+	    	if(categoryName&&categoryComment){
+	        var obj = {
+	          name:categoryName,
+	          comment:categoryComment,
+	          no:'',
+	          parentId:categoryParent
+	        };
+	        $.post(baseURL+'/manager/category/saveOrUpdateCategory',obj,function(res){
+	        	console.log('保存成功');
+	        	alert('保存成功');
+	        	loadData();
+	        	$('.modal').hide();
+	        });
+	    	}else{
+	    		$('.messageSpan').html('请输入完整的信息');
+	    	}
+	    });
+	    //修改
+	    $('.categoryDiv table').on({
+	      click:function(){
+	      	$('.messageSpan').html('');
+	      	// 获取用户选中的栏目的id
+	      	var id = $(this).closest('tr').find('input[type=checkbox]').val();
+	      	var cat = categories.filter(function(item){
+	      		return item.id == id;
+	      	})[0];
+	      	$('input[name=categoryName]').val(cat.name);
+	      	$('textarea[name=categoryComment]').val(cat.comment);
+	      	addOption(function(){
+	      		$('select[name=categoryParent]').val(cat.parent?cat.parent.id:'');
+	      	});
+	      }
+        },'i[title=修改]');
+        //删除
+        $('.categoryDiv table').on({
+        	click:function(){
+        		var id  = $(this).closest('tr').find('input[type=checkbox]').val();
+        		var obj = {
+        			id:id
+        		};
+        		$.get(baseURL+'/manager/category/deleteCategoryById',obj,function(res){
+        			if(res.status == 200){
+        				alert('删除成功');
+        				loadData();
+        			}else{
+        				alert('删除失败');
+        				console.log(res.message);
+        			}
+        		});
+        	}
+        },'i[title=删除]');
+		//批量删除
+		$('.deleteBtn').click(function(){
+		    var ids = $('#category input[type=checkbox]:checked').map(function(intex,item){
+		    	return $(item).val();
+		    }).get();
+            var obj =  {
+            	ids:ids.toString()
+            };
+            $.post(baseURL+'/manager/category/batchDeleteCategory',obj,function(res){
+                if(res.status ==200){
+                	alert('删除成功');
+                	loadData();
+                }else{
+                	alert('删除失败');
+                	console.log(res.message);
+                }
+            });
+
+		});
+
+		loadData();
+		//将从后台获取所有栏目追加到select中封装为一个对象，可以多次调用
+		function addOption(handle){
+			$('#category select option:not(:first)').remove();
+            $.get(baseURL+'/manager/category/findAllCategory',function(res){
+            	res.data.forEach(function(item){
+            		var $option = $('<option value="'+item.id+'">'+item.name+'</option>');
+            		$('#category select').append($option);
+            	});
+            	if(handle){
+            		handle();
+            	}
+            	$('.modal').show();
+            });
+		}
+		//从后台获取数据
+		function loadData(){
+			//先删除表格节点
+			$('.categoryDiv table tr:not(:first)').remove();
+			//再获取数据追加
+			$.get(baseURL+'/manager/category/findAllCategory',function(res){
+				categories = res.data;
+                res.data.forEach(function(item){
+               	    var $tr = $(`
+               	        <tr>
+							<td>
+								<input type="checkbox" value="`+item.id+`">
+							</td>
+							<td>`+item.name+`</td>
+							<td>`+(item.parent?item.parent.name:'-')+`</td>
+							<td>`+item.comment+`</td>
+							<td>
+								<i class="iconfont icon-xiugai" title="修改"></i>
+								<i class="iconfont icon-lajixiang" title="删除"></i>
+							</td>
+			            </tr>`);
+                  $('.categoryDiv table').append($tr);
+               });
+		    });
+		}
+	});
+</script>
+<style>
+    #category{
+    	background-color: #fff;
+    	padding: 20px;
+    }
+	.deleteBtn{
+		margin-left:20px;
+	}
+	.categoryDiv{
+		margin-top:20px;
+	}
+	.iconfont.icon-xiugai{
+		color:#339933;
+	}
+	.iconfont.icon-lajixiang{
+		color: red;
+	}
+	.modal{
+		width:855px;
+		margin-left:28.9%;
+		height:890px;
+		background-color: rgba(0,0,0,0.1);
+	}
+	.modal-dialog{
+		margin-top: 0;
+		margin-right:0;
+		width:300px;
+	}
+	.modal-content{
+		height:800px;
+	}
+	.backCategory{
+		float:left;
+		cursor: pointer;
+	}
+</style>

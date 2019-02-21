@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Help前端</title>
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/index.css">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div>
+		<div class="top-bar"></div>
+		<!-- 导航 -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">Help前端</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">前端</a>
+		      </li>
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">全栈</a>
+		      </li>
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          数据交互
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="#">Action</a>
+		          <a class="dropdown-item" href="#">Another action</a>
+		          <div class="dropdown-divider"></div>
+		          <a class="dropdown-item" href="#">Something else here</a>
+		        </div>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">小程序</a>
+		      </li>
+		    </ul>
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		    </form>
+		  </div>
+		</nav>
+		<!-- 导航结束 -->
+  	<!-- 内容 -->
+		<div class="container-fluid">
+			<div class="row content">
+				<!-- 左侧栏目 -->
+				<div class="col-12 col-md-2 d-none d-lg-block sidebar">
+					<dl class="left-nav">
+						<dt>热点技术</dt>
+						<dd><i class="fa fa-tv"></i>Html</dd>
+						<dd><i class="fa fa-bell"></i>Css</dd>
+						<dd><i class="fa fa-bolt"></i>Javascript</dd>
+					</dl>
+
+				</div>
+				<!-- 右侧内容 -->
+				<div class="col-12 col-md-12 col-lg-10 list-wrapper">
+					<div class="title"> 为您推荐 </div>
+					<ul class="article-list">
+						<!-- 没缩略图的文章 -->
+						<li class="article-one">
+							<a href="content.html" target="_blank">
+								<div class="article-title">【基本功】深入剖析Swift性能优化</div>
+								<div class="article-description">2014年，苹果公司在WWDC上发布Swift这一新的编程语言。经过几年的发展，Swift已经成为iOS开发语言的“中流砥柱”，Swift提供了非常灵活的高级别特性，例如协议、闭包、泛型等，并且Swift还进一步开发了强大的SIL（Swift Intermediate Language）用于对编译器进行优化，使得Swift相比Objective-C运行更快性能更优，Swift内部如何实现性能的优化，我们本文就进行一下解读，希望能对大家有所启发和帮助。</div>
+							</a>
+							<div class="article-others">
+								<i class="fa fa-thumbs-up primary-color "></i>
+								<span class="primary-color ">x2</span>
+								<span class="time">10小时前</span>
+							</div>
+						</li>
+						<!-- 没缩略图的文章 -->
+						<!-- 有缩略图的文章 -->
+						<li class="article-two">
+							<div class="article-pic">
+								<img src="./images/1.png" alt="">
+							</div>
+							<a href="#" target="_blank">
+								<div class="article-title">搭建CocosCreator组件库</div>
+								<div class="article-description">2014年，苹果公司在WWDC上发布Swift这一新的编程语言。经过几年的发展，Swift已经成为iOS开发语言的“中流砥柱”，Swift提供了非常灵活的高级别特性，例如协议、闭包、泛型等，并且Swift还进一步开发了强大的SIL（Swift Intermediate Language）用于对编译器进行优化，使得Swift相比Objective-C运行更快性能更优，Swift内部如何实现性能的优化，我们本文就进行一下解读，希望能对大家有所启发和帮助。</div>
+							</a>
+							<div class="article-others">
+								<i class="fa fa-thumbs-up primary-color "></i>
+								<span class="primary-color ">x2</span>
+								<span class="time">10小时前</span>
+							</div>
+							
+						</li>
+						<!-- 有缩略图的文章 -->
+						<!-- 有缩略图的文章 -->
+						<li class="article-two">
+							<div class="article-pic">
+								<img src="./images/2.jpg" alt="">
+							</div>
+							<a href="#" target="_blank">
+								<div class="article-title">基于Docker搭建Jumpserver堡垒机操作实践</div>
+								<div class="article-description">2014年，苹果公司在WWDC上发布Swift这一新的编程语言。经过几年的发展，Swift已经成为iOS开发语言的“中流砥柱”，Swift提供了非常灵活的高级别特性，例如协议、闭包、泛型等，并且Swift还进一步开发了强大的SIL（Swift Intermediate Language）用于对编译器进行优化，使得Swift相比Objective-C运行更快性能更优，Swift内部如何实现性能的优化，我们本文就进行一下解读，希望能对大家有所启发和帮助。</div>
+							</a>
+							<div class="article-others">
+								<i class="fa fa-thumbs-up primary-color "></i>
+								<span class="primary-color ">x2</span>
+								<span class="time">10小时前</span>
+							</div>
+							
+						</li>
+						<!-- 有缩略图的文章 -->
+						<!-- 没缩略图的文章 -->
+						<li class="article-one">
+							<a href="#">
+								<div class="article-title">【基本功】深入剖析Swift性能优化</div>
+								<div class="article-description">2014年，苹果公司在WWDC上发布Swift这一新的编程语言。经过几年的发展，Swift已经成为iOS开发语言的“中流砥柱”，Swift提供了非常灵活的高级别特性，例如协议、闭包、泛型等，并且Swift还进一步开发了强大的SIL（Swift Intermediate Language）用于对编译器进行优化，使得Swift相比Objective-C运行更快性能更优，Swift内部如何实现性能的优化，我们本文就进行一下解读，希望能对大家有所启发和帮助。</div>
+							</a>
+							<div class="article-others">
+								<i class="fa fa-thumbs-up primary-color "></i>
+								<span class="primary-color ">x2</span>
+								<span class="time">10小时前</span>
+							</div>
+						</li>
+						<!-- 没缩略图的文章 -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 内容结束 -->
+		<div class="footer">
+			<p>Copyright © 2018-2019 help. 当前呈现版本 0.0.0</p>
+			<p> 公网安备 3301060200xxx号 海普软件科技有限公司版权所有</p>
+			<p>CDN 存储服务由 Bootcdn 赞助提供 </p>
+		</div>
+
+
+
+
+
+
+	</div>
+</body>
+</html>

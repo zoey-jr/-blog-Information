@@ -1,0 +1,114 @@
+<style>
+	    .container{
+	    }
+	    .navbar{
+	    	/*background-color: rgba(20, 40, 48, 1);*/
+            margin-bottom: 0;
+            border:0;
+	    }
+		.nav-header{
+			height: 70px;
+			line-height: 70px;
+            border-bottom: 1px solid #ccc;
+            margin:0 10px;
+			/*background-color: rgba(61, 85, 109, 1);*/
+		}
+        .nav-header .navbar-brand{
+            font-size:20px;
+            color:#EB5E28;
+        }
+		.nav-header>img,.navbar-brand{
+			position:relative;
+			top: 0;
+		}
+		.nav-header>img{
+			left: -80px;
+		}
+		.navbar-brand{
+			float: none;
+			left:50px;
+		}
+		.navbar a{
+            font-size:16px;
+			color:#858585;
+		}
+        .navbar a:hover{
+            color:#EB5E28;
+            background-color: #fff;
+        }
+        .nav > li > a:focus, .nav > li > a:hover{
+            background-color: #fff;
+        }
+        ul.nav{
+        	padding: 0px 5px 0 5px;
+        }
+        ul.nav>li{
+            height:50px;
+            line-height: 50px;
+            /*border-bottom: 1px solid rgba(51, 51, 51, 1);*/
+        }
+        .nav>li>a{
+			padding: 10px 30px;
+        }
+        .glyphicon-chevron-right{
+        	margin-left:70px;
+        }
+        ul .words{
+        	padding:0 10px;
+        }
+        ul .words-sy{
+        	padding-right: 38px;
+        }
+        .content{
+        	background-color: #f4f3ef;
+        	border-right: 1px solid #ccc;
+        }
+        .con-header{
+        	height:70px;
+            line-height:70px;
+            padding: 0 5px;
+            border-bottom: 1px solid #ccc;
+
+            /*background-color: #fff;*/
+            position:relative;
+
+        }
+        .con-header .personal>span{
+            display: inline-block;
+            height:40px;
+            line-height:40px;
+            
+        }
+        .contentbody{
+            overflow: auto;
+            margin: 20px 10px 0 10px;
+            position: relative;
+        }
+        .col-lg-3,.col-lg-9{
+        	padding: 0;
+        }
+        .con-header>.glyphicon{
+        	font-size:20px;
+            margin: 20px;
+            color: #858585;
+            line-height: 0.5em;
+        }
+/*        .redcicle{
+        	width:15px;
+        	height:15px;
+        	border-radius:50%;
+        	background-color: rgba(224, 81, 64, 1);
+        	position:absolute;
+        	top: 11px;
+        	left: 91px;
+        	color: #fff;
+        	text-align:center;
+        	line-height:15px;
+        	font-size: 12px;
+        }*/
+        .personal{
+        	position: absolute;
+        	right: 50px;
+        	top: 0px;
+        }
+	</style>
